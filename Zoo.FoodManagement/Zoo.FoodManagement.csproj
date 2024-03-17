@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zoo.Comnon\Zoo.Common.csproj" />
+    <ProjectReference Include="..\Zoo.Models\Zoo.Models.csproj" />
+    <ProjectReference Include="..\Zoo.Services\Zoo.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Docs\" />
+    <Folder Include="External\Csv\" />
+    <Folder Include="External\Txt\" />
+    <Folder Include="External\Xml\" />
+  </ItemGroup>
+
+</Project>

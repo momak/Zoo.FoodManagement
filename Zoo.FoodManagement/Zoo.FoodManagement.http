@@ -1,0 +1,6 @@
+@Zoo.FoodManagement_HostAddress = http://localhost:5041
+
+POST {{Zoo.FoodManagement_HostAddress}}/Zoo/
+Accept: application/json
+
+###

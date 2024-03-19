@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Docs\" />
     <Folder Include="External\Csv\" />
     <Folder Include="External\Txt\" />
     <Folder Include="External\Xml\" />

@@ -1,5 +1,5 @@
 ﻿namespace Zoo.Models.Abstractions;
 
-public interface IZoo
+public abstract class ZooBase
 {
 }

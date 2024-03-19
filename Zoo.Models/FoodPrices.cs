@@ -2,7 +2,7 @@
 
 namespace Zoo.Models;
 
-public class FoodPrices : IZoo
+public class FoodPrices : ZooBase
 {
     public List<FoodPrice> Prices = new();
 }

@@ -25,7 +25,7 @@ namespace Zoo.Services.Implementations
         public string Mode() => ".txt";
 
         /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
-        public async Task<IZoo> LoadDataContent(string filePath, CancellationToken ct = default)
+        public async Task<ZooBase> LoadDataContent(string filePath, CancellationToken ct = default)
         {
             if (string.IsNullOrEmpty(filePath)) return default;
 

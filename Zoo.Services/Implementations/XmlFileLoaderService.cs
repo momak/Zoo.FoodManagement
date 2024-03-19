@@ -23,7 +23,7 @@ public class XmlFileLoaderService
     public string Mode() => ".xml";
 
     /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
-    public async Task<IZoo> LoadDataContent(string filePath, CancellationToken ct)
+    public async Task<ZooBase> LoadDataContent(string filePath, CancellationToken ct)
     {
         if (string.IsNullOrEmpty(filePath)) return default;
 

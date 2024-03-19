@@ -26,7 +26,7 @@ public class CsvFileLoaderService
     public string Mode() => ".csv";
 
     /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
-    public async Task<IZoo> LoadDataContent(string filePath, CancellationToken ct)
+    public async Task<ZooBase> LoadDataContent(string filePath, CancellationToken ct)
     {
         if (string.IsNullOrEmpty(filePath)) return default;
 

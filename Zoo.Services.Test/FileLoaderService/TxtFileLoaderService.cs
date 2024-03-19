@@ -41,7 +41,7 @@ namespace Zoo.Services.Test.FileLoaderService
 
             // Assert
             actual.Should().NotBeNull();
-            actual.Should().BeAssignableTo<IZoo>();
+            actual.Should().BeAssignableTo<ZooBase>();
             actual.Should().BeOfType<FoodPrices>();
         }
 

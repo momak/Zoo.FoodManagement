@@ -38,7 +38,7 @@ public class XmlFileLoaderService
 
         // Assert
         actual.Should().NotBeNull();
-        actual.Should().BeAssignableTo<IZoo>();
+        actual.Should().BeAssignableTo<ZooBase>();
         actual.Should().BeOfType<Models.Zoo>().Subject.Animals.Count.Should().Be(8);
     }
 
@@ -60,7 +60,7 @@ public class XmlFileLoaderService
 
         // Assert
         actual.Should().NotBeNull();
-        actual.Should().BeAssignableTo<IZoo>();
+        actual.Should().BeAssignableTo<ZooBase>();
         actual.Should().BeOfType<Models.Zoo>().Subject.Animals.Count.Should().Be(0);
         
         _fileWrapperMock.Verify(x => x.Exists(It.IsAny<string>()), Times.Once);

@@ -39,7 +39,7 @@ public class CsvFileLoaderService
 
         // Assert
         actual.Should().NotBeNull();
-        actual.Should().BeAssignableTo<IZoo>();
+        actual.Should().BeAssignableTo<ZooBase>();
         actual.Should().BeOfType<AnimalTypeConfig>().Subject.Configurations.Count.Should().Be(6);
     }
 
@@ -59,7 +59,7 @@ public class CsvFileLoaderService
 
         // Assert
         actual.Should().NotBeNull();
-        actual.Should().BeAssignableTo<IZoo>();
+        actual.Should().BeAssignableTo<ZooBase>();
         actual.Should().BeOfType<AnimalTypeConfig>().Subject.Configurations.Count.Should().Be(0);
 
         _fileWrapperMock.Verify(x => x.Exists(It.IsAny<string>()), Times.Once);

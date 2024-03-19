@@ -9,7 +9,7 @@ using Zoo.Models.Enums;
 namespace Zoo.Models;
 
 [XmlRoot(ElementName = "Zoo")]
-public class Zoo : IZoo, IXmlSerializable
+public class Zoo : ZooBase, IXmlSerializable
 {
     public List<ZooAnimal> Animals { get; set; }
     

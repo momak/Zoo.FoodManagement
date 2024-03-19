@@ -16,5 +16,5 @@ public interface IFileLoaderService
     /// <param name="filePath">path to file</param>
     /// <param name="ct">Cancellation Token</param>
     /// <returns>model representation of file contents</returns>
-    Task<IZoo> LoadDataContent(string filePath, CancellationToken ct = default);
+    Task<ZooBase> LoadDataContent(string filePath, CancellationToken ct = default);
 }

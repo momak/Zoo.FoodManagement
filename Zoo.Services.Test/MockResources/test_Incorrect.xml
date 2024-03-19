@@ -1,0 +1,8 @@
+﻿<Zoo>
+  <Dogs>
+    <Dog name="Bak" kg="10"/>
+  </Dogs>  
+  <Cats>
+    <Cat name="Lucy" kg="1.5"/>
+  </Cats>
+</Zoo>

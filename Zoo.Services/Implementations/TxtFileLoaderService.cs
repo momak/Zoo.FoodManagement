@@ -13,25 +13,30 @@ namespace Zoo.Services.Implementations
     public class TxtFileLoaderService
         : BaseService, IFileLoaderService
     {
-        public TxtFileLoaderService(ILogger logger)
-            : base(logger)
-        { }
+        private readonly IFile _fileWrapper;
 
+        public TxtFileLoaderService(IFile fileWrapper, ILogger logger)
+            : base(logger)
+        {
+            _fileWrapper = fileWrapper;
+        }
+
+        /// <inheritdoc cref="IFileLoaderService.Mode" />
         public string Mode() => ".txt";
 
         /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
-        public async Task<IZoo> LoadDataContent(string filePath, CancellationToken ct)
+        public async Task<IZoo> LoadDataContent(string filePath, CancellationToken ct = default)
         {
             if (string.IsNullOrEmpty(filePath)) return default;
 
             const string loggerActionFormat = "{0} to load data from '{1}'";
             logger.Information(loggerActionFormat, "Trying", filePath);
-
+            
             try
             {
-                if (File.Exists(filePath))
+                if (_fileWrapper.Exists(filePath) && _fileWrapper.GetExtension(filePath) == Mode())
                 {
-                    var textLines = File.ReadLinesAsync(filePath, ct);
+                    var textLines = _fileWrapper.ReadLinesAsync(filePath, ct);
                     var prices = new FoodPrices();
 
                     await foreach (var line in textLines)

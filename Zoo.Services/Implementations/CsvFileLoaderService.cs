@@ -14,10 +14,15 @@ namespace Zoo.Services.Implementations;
 public class CsvFileLoaderService
     : BaseService, IFileLoaderService
 {
-    public CsvFileLoaderService(ILogger logger)
+    private readonly IFile _fileWrapper;
+
+    public CsvFileLoaderService(IFile fileWrapper, ILogger logger)
         : base(logger)
-    { }
-    
+    {
+        _fileWrapper = fileWrapper;
+    }
+
+    // <inheritdoc cref="IFileLoaderService.Mode" />
     public string Mode() => ".csv";
 
     /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
@@ -30,7 +35,7 @@ public class CsvFileLoaderService
 
         try
         {
-            if (File.Exists(filePath))
+            if (_fileWrapper.Exists(filePath) && _fileWrapper.GetExtension(filePath) == Mode())
             {
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture)
                 {
@@ -42,12 +47,12 @@ public class CsvFileLoaderService
 
                 using var reader = new StreamReader(filePath);
                 using var csv = new CsvReader(reader, config);
-                
+
                 await foreach (var animal in csv.GetRecordsAsync<Animal>(ct))
                 {
                     animals.Configurations.Add(animal);
                 }
-                
+
                 logger.Information(loggerActionFormat, "Success", filePath);
                 return animals;
             }

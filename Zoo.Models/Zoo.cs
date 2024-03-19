@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Zoo.Common.Extensions;
 using Zoo.Models.Abstractions;
 using Zoo.Models.Enums;
 
@@ -26,9 +27,12 @@ public class Zoo : IZoo, IXmlSerializable
             {
                 if (reader.NodeType == XmlNodeType.Element &&  Enum.IsDefined(typeof(AnimalType), reader.Name))
                 {
-                    ZooAnimal animal = new ZooAnimal(reader.Name);
-                    animal.Name = reader["name"];
-                    animal.Weight = Convert.ToDecimal(reader["kg"]);
+                    ZooAnimal animal = new ZooAnimal()
+                    {
+                        Name = reader["name"]??string.Empty,
+                        Weight = Convert.ToDecimal(reader["kg"]),
+                        Type = reader.Name.ToEnum<AnimalType>()
+                    };
                     Animals.Add(animal);
                 }
             }

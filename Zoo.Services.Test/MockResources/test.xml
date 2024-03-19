@@ -1,0 +1,22 @@
+﻿<Zoo>
+  <Lions>
+    <Lion name="Li" kg="100"/>
+  </Lions>
+  <Giraffes>
+    <Giraffe name="Gi" kg="200"/>
+  </Giraffes>
+  <Tigers>
+    <Tiger name="Ti" kg="150"/>
+    <Tiger name="Tig" kg="139"/>
+  </Tigers>
+  <Zebras>
+    <Zebra name="Dale" kg="62"/>
+  </Zebras>
+  <Wolves>
+    <Wolf name="Pin" kg="78"/>
+    <Wolf name="Pon" kg="69"/>
+  </Wolves>
+  <Piranhas>
+    <Piranha name="Pir" kg="0.5"/>
+  </Piranhas>
+</Zoo>

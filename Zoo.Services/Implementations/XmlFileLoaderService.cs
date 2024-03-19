@@ -11,11 +11,15 @@ namespace Zoo.Services.Implementations;
 public class XmlFileLoaderService
     : BaseService, IFileLoaderService
 {
-    public XmlFileLoaderService(ILogger logger)
+    private readonly IFile _fileWrapper;
+
+    public XmlFileLoaderService(IFile fileWrapper, ILogger logger)
         : base(logger)
     {
+        _fileWrapper = fileWrapper;
     }
 
+    /// <inheritdoc cref="IFileLoaderService.Mode" />
     public string Mode() => ".xml";
 
     /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
@@ -28,7 +32,7 @@ public class XmlFileLoaderService
         
         try
         {
-            if (File.Exists(filePath))
+            if (_fileWrapper.Exists(filePath) && _fileWrapper.GetExtension(filePath) == Mode())
             {
                 var serializer = new XmlSerializer(typeof(Models.Zoo));
 

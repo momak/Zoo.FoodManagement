@@ -4,10 +4,6 @@ namespace Zoo.Models;
 
 public class ZooAnimal : Animal
 {
-    public string Name { get; set; }
-
-    public decimal Weight { get; set; }
-
     public ZooAnimal()
     {
     }
@@ -16,6 +12,11 @@ public class ZooAnimal : Animal
     {
         Type = Enum.Parse<AnimalType>(type);
     }
+
+    public string Name { get; set; }
+
+    public decimal Weight { get; set; }
+
 
     public void SetAnimalConfig(Animal? animal)
     {

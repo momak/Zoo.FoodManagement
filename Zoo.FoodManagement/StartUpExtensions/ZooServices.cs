@@ -9,6 +9,7 @@ public static class ZooServices
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services
+            .AddTransient<IFile, FileWrapper>()
             .AddTransient<IFoodPriceService, FoodPriceService>()
             .AddTransient<IZooPriceService, ZooPriceService>()
             .AddTransient<TxtFileLoaderService>()

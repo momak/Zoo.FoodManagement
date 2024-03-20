@@ -5,7 +5,7 @@ using Zoo.Services.Abstractions;
 namespace Zoo.FoodManagement.Controllers
 {
     /// <summary>
-    /// CongestionTax API Controller
+    /// Zoo API Controller
     /// </summary>
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]

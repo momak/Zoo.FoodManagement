@@ -1,5 +1,4 @@
 ﻿using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using Zoo.Common.Extensions;
@@ -27,10 +26,10 @@ public class Zoo : ZooBase, IXmlSerializable
             {
                 if (reader.NodeType == XmlNodeType.Element &&  Enum.IsDefined(typeof(AnimalType), reader.Name))
                 {
-                    ZooAnimal animal = new ZooAnimal()
+                    var animal = new ZooAnimal()
                     {
                         Name = reader["name"]??string.Empty,
-                        Weight = Convert.ToDecimal(reader["kg"]),
+                        Weight = reader["kg"].ToDecimal(),
                         Type = reader.Name.ToEnum<AnimalType>()
                     };
                     Animals.Add(animal);

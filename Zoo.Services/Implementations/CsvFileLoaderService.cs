@@ -4,6 +4,7 @@ using Serilog;
 using System.Globalization;
 using Zoo.Models;
 using Zoo.Models.Abstractions;
+using Zoo.Models.Mappings;
 using Zoo.Services.Abstractions;
 
 namespace Zoo.Services.Implementations;
@@ -22,7 +23,7 @@ public class CsvFileLoaderService
         _fileWrapper = fileWrapper;
     }
 
-    // <inheritdoc cref="IFileLoaderService.Mode" />
+    /// <inheritdoc cref="IFileLoaderService.Mode" />
     public string Mode() => ".csv";
 
     /// <inheritdoc cref="IFileLoaderService.LoadDataContent" />
@@ -47,7 +48,7 @@ public class CsvFileLoaderService
 
                 using var reader = new StreamReader(filePath);
                 using var csv = new CsvReader(reader, config);
-
+                csv.Context.RegisterClassMap<AnimalMap>();
                 await foreach (var animal in csv.GetRecordsAsync<Animal>(ct))
                 {
                     animals.Configurations.Add(animal);

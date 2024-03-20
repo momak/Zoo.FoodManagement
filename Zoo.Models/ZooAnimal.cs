@@ -1,16 +1,9 @@
-﻿using Zoo.Models.Enums;
-
-namespace Zoo.Models;
+﻿namespace Zoo.Models;
 
 public class ZooAnimal : Animal
 {
     public ZooAnimal()
     {
-    }
-
-    public ZooAnimal(string type)
-    {
-        Type = Enum.Parse<AnimalType>(type);
     }
 
     public string Name { get; set; }

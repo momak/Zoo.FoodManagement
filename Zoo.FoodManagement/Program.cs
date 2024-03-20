@@ -80,7 +80,6 @@ try
 }
 catch (Exception ex)
 {
-    // Log.Logger will likely be internal type "Serilog.Core.Pipeline.SilentLogger".
     if (Log.Logger == null || Log.Logger.GetType().Name == "SilentLogger")
     {
         Log.Logger = new LoggerConfiguration()
